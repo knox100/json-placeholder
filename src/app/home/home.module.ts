@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users.component';
-import { AppModule } from '../app.module';
+import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [HomeComponent],
   imports: [CommonModule, RouterModule],
-  exports: [UsersComponent],
 })
-export class UsersModule {}
+export class HomeModule {}

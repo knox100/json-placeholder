@@ -5,8 +5,11 @@ import { UsersService } from '../users.service';
 @Component({
   selector: 'app-users',
   template: `
-    <div class="bg-gray-100">
-      <h1 class="flex justify-center items-center font-bold text-2xl">
+    <div class="">
+      <h1
+        *ngIf="users.length > 0"
+        class="flex justify-center items-center font-bold text-2xl"
+      >
         This is a JSON PlaceHolder App
       </h1>
       <div class="grid grid-cols-4 p-6">
@@ -18,10 +21,9 @@ import { UsersService } from '../users.service';
             <li>Name : {{ user.name }}</li>
             <li>Email address : {{ user.email }}</li>
             <button
-              routerLink="/details"
               class="bg-black hover:text-gray-600 rounded-md  border-solid p-2 mt-2 border-white"
             >
-              View Details
+              <a routerLink="/user/id">View Details</a>
             </button>
           </div>
         </ul>
@@ -32,6 +34,7 @@ import { UsersService } from '../users.service';
 })
 export class UsersComponent implements OnInit {
   users!: Users[];
+  router: any;
 
   constructor(private usersService: UsersService) {}
 
@@ -39,6 +42,9 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
+  //Navigating to user
+
+  // Getting users
   getUsers() {
     this.usersService.getUsers().subscribe((users) => {
       console.log(users);
